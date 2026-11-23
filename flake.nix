@@ -22,7 +22,7 @@
         let
           seabird-rcon-plugin = pkgs.buildGoModule rec {
             pname = "seabird-rcon-plugin";
-            version = "0.1.0";
+            version = "0.1.1-dev";
             src = ./.;
             vendorHash = "sha256-OXhq9WQ/US+o6v/cXrZWgmnIpvdhnO7PHJf+cCJT/VI=";
             subPackages = [ "cmd/${pname}" ];
