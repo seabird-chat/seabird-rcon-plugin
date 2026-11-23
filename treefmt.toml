@@ -1,0 +1,9 @@
+# Formatters run by `just fmt`.
+[formatter.nixfmt]
+command = "nixfmt"
+includes = ["*.nix"]
+
+[formatter.goimports]
+command = "goimports"
+options = ["-w", "-local", "github.com/seabird-chat/seabird-rcon-plugin"]
+includes = ["*.go"]

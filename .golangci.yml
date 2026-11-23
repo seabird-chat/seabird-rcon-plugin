@@ -1,0 +1,11 @@
+# golangci-lint settings for `just lint`.
+version: "2"
+
+linters:
+  settings:
+    errcheck:
+      exclude-functions:
+        - (*github.com/seabird-chat/seabird-go.Client).Close
+        - (*github.com/seabird-chat/seabird-go.EventStream).Close
+        - (net.Conn).Close
+        - fmt.Fprintln

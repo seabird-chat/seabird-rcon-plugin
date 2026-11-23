@@ -1,0 +1,50 @@
+# CI: formatting and lint in parallel, then tests and the Nix package build.
+when:
+  - event: pull_request
+  - event: push
+    branch: main
+
+# Always build on arm64 so our environment matches
+labels:
+  platform: linux/arm64
+
+steps:
+  check-fmt:
+    image: nixos/nix:2.35.1
+    environment:
+      NIX_CONFIG: |
+        experimental-features = nix-command flakes
+        accept-flake-config = true
+    commands:
+      - nix develop --command just fmt --ci
+    depends_on: []
+
+  check-lint:
+    image: nixos/nix:2.35.1
+    environment:
+      NIX_CONFIG: |
+        experimental-features = nix-command flakes
+        accept-flake-config = true
+    commands:
+      - nix develop --command just lint
+    depends_on: []
+
+  test:
+    image: nixos/nix:2.35.1
+    environment:
+      NIX_CONFIG: |
+        experimental-features = nix-command flakes
+        accept-flake-config = true
+    commands:
+      - nix develop --command just test
+    depends_on: [check-fmt, check-lint]
+
+  build:
+    image: nixos/nix:2.35.1
+    environment:
+      NIX_CONFIG: |
+        experimental-features = nix-command flakes
+        accept-flake-config = true
+    commands:
+      - nix build --print-build-logs
+    depends_on: [test]

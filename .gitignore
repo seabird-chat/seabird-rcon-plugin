@@ -1,0 +1,11 @@
+# direnv
+/.direnv/
+/.envrc
+
+# Local config for `just run`
+.env
+/config.toml
+
+# Built binaries
+/tmp/
+/result*
