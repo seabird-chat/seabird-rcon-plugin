@@ -43,10 +43,11 @@ things like `op` and `gamemode`, so admin is only ever granted to specific
 users. Operator access can go to users or to everyone talking in a
 channel.
 
-Users are listed by their full seabird ID, like
-`discord://seabird/107685126950891520`. IRC user IDs are just nicknames, and
-nothing stops someone from taking another person's nickname, so don't list
-those.
+Users and channels are listed by the IDs seabird gives them, like
+`sbu_5k2q8mzx7v1rc` for a user. `seabird-core user list` and
+`seabird-core channel list` show them. On IRC a user is whoever has the
+nickname, and nothing stops someone from taking another person's nickname, so
+don't list IRC users.
 
 ## Configuration
 
@@ -70,13 +71,13 @@ password_file = "/run/credentials/seabird-rcon-plugin.service/cozy-calzones"
 map_url = "https://mc-calzone.elwert.cloud"
 
 # Commands here default to this server.
-channels = ["discord://seabird/1409444083880951940"]
+channels = ["sbc_9w4hb2kd8xq3n"]
 
 # Anyone talking here is an operator.
-operator_channels = ["discord://seabird/1409444083880951940"]
+operator_channels = ["sbc_9w4hb2kd8xq3n"]
 
 operators = []
-admins = ["discord://seabird/107685126950891520"]
+admins = ["sbu_5k2q8mzx7v1rc"]
 ```
 
 Each server needs exactly one of `password_file` or `password`. Use
