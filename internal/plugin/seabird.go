@@ -20,8 +20,6 @@ func (c *SeabirdChat) Send(ctx context.Context, channelID, text string) error {
 	_, err := c.Client.Inner.SendMessage(ctx, &pb.SendMessageRequest{
 		ChannelId: channelID,
 		Text:      text,
-		// Status replies carry the map link, which doesn't need a preview.
-		Tags: map[string]string{"url/skip": "1"},
 	})
 	return err
 }
